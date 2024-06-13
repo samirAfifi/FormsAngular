@@ -1,0 +1,116 @@
+<div class="w-75 mx-auto mt-5">
+    <h1>Reactive_Form</h1>
+    <form [formGroup]="reigsterForm" (ngSubmit)="handleReigster(reigsterForm)" >
+        <div class="form-group">
+            <label for="username">username :</label>
+            <input formControlName="username"  type="text" id="username" class="form-control mb-3" >
+            <div *ngIf="reigsterForm.get('username').hasError('required')&& reigsterForm.get('username')?.touched">
+                <p class="alert alert-danger">username is required.</p>
+              </div>
+        </div><!--/form-group-->
+       <div class="d-flex justify-content-between">
+        <div class="form-group name">
+            <label for="firstname">first name :</label>
+            <input formControlName="firstname"  type="text" id="firstname" class="form-control mb-3">
+            <div *ngIf="reigsterForm.get('firstname').hasError('required')&& reigsterForm.get('firstname')?.touched">
+                <p class="alert alert-danger">firstname is required.</p>
+              </div>
+        </div><!--/form-group-->
+        <div class="form-group name">
+            <label for="lastname">last name :</label>
+            <input formControlName="lastname"  type="text" id="lastname" class="form-control mb-3">
+            
+        </div><!--/form-group-->
+       </div><!--d-flex-->
+
+       <div class="form-group">
+        <label for="email">email :</label>
+        <input formControlName="email"  type="email" id="email" class="form-control mb-3">
+        <div *ngIf="reigsterForm.get('email').hasError('required')&& reigsterForm.get('email')?.touched">
+            <p class="alert alert-danger">email is required.</p>
+          </div>
+    </div><!--/form-group-->
+
+    <div class="form-group">
+        <label for="password">password :</label>
+        <input formControlName="password"  type="password" id="password" class="form-control mb-3">
+        <div *ngIf="reigsterForm.get('password').hasError('required')&& reigsterForm.get('password')?.touched">
+            <p class="alert alert-danger">password is required.</p>
+          </div>
+    </div><!--/form-group-->
+    <div class="form-group">
+        <label for="age">age :</label>
+        <input formControlName="age" type="number" id="age" class="form-control mb-3">
+        <div *ngIf="reigsterForm.get('age').hasError('required')&& reigsterForm.get('age')?.touched">
+            <p class="alert alert-danger">age is required.</p>
+          </div>
+    </div><!--/form-group-->
+
+    <div class="form-group" >
+        <label for="country">Country:</label>
+  <select formControlName="country" id="country" class="form-control" required>
+    <option *ngFor="let country of countries" [value]="country.value">{{ country.name }}</option>
+  </select>
+  <div *ngIf="reigsterForm.get('country').hasError('required')&& reigsterForm.get('country')?.touched">
+    <p class="alert alert-danger">country is required.</p>
+  </div>
+      </div><!--/form-group-->
+
+      <div class="form-group mt-4">
+        <label for="photo">Photo (PNG, JPG, or JPEG required):</label>
+        <input type="file" formControlName="photo" id="photo" accept="image/png,image/jpeg,image/jpg" >
+        <div *ngIf="reigsterForm.get('photo').hasError('required')&& reigsterForm.get('photo')?.touched">
+          <p class="alert alert-danger">Invalid photo format. Please select a PNG, JPG, or JPEG image.</p>
+        </div>
+
+      </div><!--/form-group-->
+
+    
+     
+     
+      <div class="form-group">
+        <p class="mt-4">Select a gender:</p>
+      
+        <div>
+            <input type="radio" formControlName="gender" value="male" name="gender" id="genderMale"> Male
+            <input type="radio" formControlName="gender" value="female" name="gender" id="genderFemale"> Female
+        </div>
+        <div *ngIf="reigsterForm.get('gender').hasError('required')&& reigsterForm.get('gender')?.touched">
+            <p class="alert alert-danger">gender is required.</p>
+          </div>
+        
+    </div><!--/form-group-->
+
+
+
+
+    <button [disabled]="reigsterForm.invalid" type="submit" class="btn btn-success w-100 m-3">Submit</button>
+      
+    
+        
+  
+        
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+    
+        
+
+   
+</div>
